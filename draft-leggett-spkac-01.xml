@@ -234,7 +234,7 @@ END
         SPKAC message signed with an
         <xref target="RFC8017" format="default">RSA key</xref> using
         the
-        <xref target="RFC4634" format="default">SHA256 message-digest</xref>
+        <xref target="RFC6234" format="default">SHA256 message-digest</xref>
         algorithm.
       </t>
       <artwork name="" type="" align="left" alt=""><![CDATA[
