@@ -347,7 +347,7 @@ Netscape SPKI:
         for the identifier of the ASN.1 SPKAC schema, and to add this to
         the ASN.1 definition in this specification.</t>
       <t>All drafts are required to have an IANA considerations section (see
-     <xref target="RFC5226" format="default">Guidelines for Writing an IANA Considerations Section in RFCs</xref> for a guide). If the draft does not require IANA to do
+     <xref target="RFC8126" format="default">Guidelines for Writing an IANA Considerations Section in RFCs</xref> for a guide). If the draft does not require IANA to do
      anything, the section contains an explicit statement that this is the
      case (as above). If there are no requirements for IANA, the section will
      be removed during conversion into an RFC by the RFC Editor.</t>
@@ -439,27 +439,18 @@ Netscape SPKI:
             </abstract>
           </front>
         </reference>
-        <reference anchor="RFC4634" target="https://www.rfc-editor.org/info/rfc4634">
+        <reference anchor="RFC6234" target="https://www.rfc-editor.org/info/rfc6234">
           <front>
-            <title>US Secure Hash Algorithms (SHA and HMAC-SHA)</title>
-            <author initials="D." surname="Eastlake 3rd" fullname="D. Eastlake 3rd">
-              <organization/>
-            </author>
-            <author initials="T." surname="Hansen" fullname="T. Hansen">
-              <organization/>
-            </author>
-            <date year="2006" month="July"/>
+            <title>US Secure Hash Algorithms (SHA and SHA-based HMAC and HKDF)</title>
+            <author fullname="D. Eastlake 3rd" initials="D." surname="Eastlake 3rd"/>
+            <author fullname="T. Hansen" initials="T." surname="Hansen"/>
+            <date month="May" year="2011"/>
             <abstract>
-              <t>
-                The United States of America has adopted a suite of Secure Hash Algorithms (SHAs), including four beyond SHA-1, as part of a Federal Information Processing Standard (FIPS), specifically SHA-224 (RFC 3874), SHA-256, SHA-384, and SHA-512. The purpose of this document is to make source code performing these hash functions conveniently available to the Internet community. The sample code supports input strings of arbitrary bit length. SHA-1's sample code from RFC 3174 has also been updated to handle input strings of arbitrary bit length. Most of the text herein was adapted by the authors from FIPS 180-2.
-              </t>
-              <t>
-                Code to perform SHA-based HMACs, with arbitrary bit length text, is also included. This memo provides information for the Internet community.
-              </t>
+              <t>Federal Information Processing Standard, FIPS</t>
             </abstract>
           </front>
-          <seriesInfo name="RFC" value="4634"/>
-          <seriesInfo name="DOI" value="10.17487/RFC4634"/>
+          <seriesInfo name="RFC" value="6234"/>
+          <seriesInfo name="DOI" value="10.17487/RFC6234"/>
         </reference>
         <reference anchor="RFC4648" target="https://www.rfc-editor.org/info/rfc4648" xml:base="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.4648.xml">
           <front>
@@ -632,24 +623,22 @@ Netscape SPKI:
         <name>Informative References</name>
         <!-- Here we use entities that we defined at the beginning. -->
 
-        <reference anchor="RFC5226" target="https://www.rfc-editor.org/info/rfc5226" xml:base="https://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5226.xml">
+        <reference anchor="RFC8126" target="https://www.rfc-editor.org/info/rfc8126">
           <front>
             <title>Guidelines for Writing an IANA Considerations Section in RFCs</title>
-            <seriesInfo name="DOI" value="10.17487/RFC5226"/>
-            <seriesInfo name="RFC" value="5226"/>
-            <author initials="T." surname="Narten" fullname="T. Narten">
-              <organization/>
-            </author>
-            <author initials="H." surname="Alvestrand" fullname="H. Alvestrand">
-              <organization/>
-            </author>
-            <date year="2008" month="May"/>
+            <author fullname="M. Cotton" initials="M." surname="Cotton"/>
+            <author fullname="B. Leiba" initials="B." surname="Leiba"/>
+            <author fullname="T. Narten" initials="T." surname="Narten"/>
+            <date month="June" year="2017"/>
             <abstract>
-              <t>Many protocols make use of identifiers consisting of constants and other well-known values.  Even after a protocol has been defined and deployment has begun, new values may need to be assigned (e.g., for a new option type in DHCP, or a new encryption or authentication transform for IPsec).  To ensure that such quantities have consistent values and interpretations across all implementations, their assignment must be administered by a central authority.  For IETF protocols, that role is provided by the Internet Assigned Numbers Authority (IANA).</t>
-              <t>In order for IANA to manage a given namespace prudently, it needs guidelines describing the conditions under which new values can be assigned or when modifications to existing values can be made.  If IANA is expected to play a role in the management of a namespace, IANA must be given clear and concise instructions describing that role.  This document discusses issues that should be considered in formulating a policy for assigning values to a namespace and provides guidelines for authors on the specific text that must be included in documents that place demands on IANA.</t>
-              <t>This document obsoletes RFC 2434.  This document specifies an Internet Best  Current Practices for the Internet Community, and requests discussion and  suggestions for improvements.</t>
+              <t>Many protocols make use of points of extensibility that use constants to identify various protocol parameters. To ensure that the values in these fields do not have conflicting uses and to promote interoperability, their allocations are often coordinated by a central record keeper. For IETF protocols, that role is filled by the Internet Assigned Numbers Authority (IANA).</t>
+              <t>To make assignments in a given registry prudently, guidance describing the conditions under which new values should be assigned, as well as when and how modifications to existing values can be made, is needed. This document defines a framework for the documentation of these guidelines by specification authors, in order to assure that the provided guidance for the IANA Considerations is clear and addresses the various issues that are likely in the operation of a registry.</t>
+              <t>This is the third edition of this document; it obsoletes RFC 5226.</t>
             </abstract>
           </front>
+          <seriesInfo name="BCP" value="26"/>
+          <seriesInfo name="RFC" value="8126"/>
+          <seriesInfo name="DOI" value="10.17487/RFC8126"/>
         </reference>
       </references>
     </references>
