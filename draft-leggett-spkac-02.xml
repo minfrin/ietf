@@ -130,20 +130,65 @@
           hardware enclave).
         </t>
         <t>
-          For a long time the Signed Public Key and Challenge was a de facto
-          standard widely implemented but not standardised. The purpose of this
-          RFC is to document the existing use of the protocol, address security
-          implementation weaknesses in common implementations, and formalise the
-          protocol into a standard.
+          For a long time the Signed Public Key and Challenge (SPKAC) was a de facto
+          standard widely implemented, with full interoperabolity between the
+          various webbrowsers and cryptogrphic serverside stacks. But SPKAC was never
+	  standardised. The purpose of this RFC is to document the existing use of 
+          the protocol and  formalise a writeup of this the protocol into a standard.
+	  This document will also document some of the security assumptions and
+          weaknesses of this protocol; such as its reliance on MD5.
         </t>
         <t>
-          Note that, in 2015, Google unilaterally decided to retire keygen tag
-          support from the Chrome web browser. Prior to this; SPKAC was widely
+         In 2015, Google unilaterally decided to retire keygen tag
+	 support from the Chrome web browser. 
+        </t>
+        <t>
+   	  Prior to this; SPKAC was widely
           used by both centralised CAs (that would issue personal digital x509
           certificates) as well as in local enterprise and federated settings.
           This removal has left the web community with no standard way, de facto
           or otherwise, to distribute soft and hard tokens to clients.
         </t>
+	<t>
+ 	 This protocol; and the SPKAC ASN.1 structure was never formally documented.
+	</t>
+      </section>
+      <section anchor="Use" numbered="true" toc="default">
+        <name>Historic use</name>
+	<t>
+	 A webbrowser would typically present the user with an HTML form
+         with in it a html keygen tag. Together with this tag, the form
+         would usually aso capture some additional data; such as 
+         a (user)name. The keygen may contain additional attributes; such
+         as a serverside set challenge string (default is none) and a keytype
+         (default is RSA) and key parameters/curve.
+	</t>
+	<t>
+	 Upon submission of the form - the browser will generate a private
+         key (in its own keystore; the operating-system keystore or on 
+         an hardware enclave (e.g. chipcard)). The browser
+         then packages the public key, the optional challenge and the key
+         parameters into the SPKAC ASN.1 structure and base64 encode it.
+	</t>
+	<t>
+	 This base64 string; along with the other form elements, such as
+         for example the users name, a one time password or a phone number, 
+         is then sent to the HTTP server using a normal
+         HTTP GET or POST. Where a CGI script creates an X.509 signing 
+         requests based on this data, signs it and returns the X.509
+         client certificate to the webbrowser. Either right away; or
+         at any point later -- typically after manual verification. Most
+         processes would include additional data in the cerificate obtained
+         from other sources (i.e. not entered, or under the direct control
+	 of the user) and additional, human in the loop, verification.
+	</t>
+        <t>
+	 The webbrowser parses any X.509 client certificate sent to it
+         (based on mime-type, origin is generally not checked), and store
+         such in its keystore. Where it is then available for TLS client
+         ceritificiate authentication or, for example, digitally signing
+	 emails.
+	 </t>
       </section>
     </section>
 
@@ -194,7 +239,7 @@
         contained in this document in the form of the ASN.1 module SPKAC.
       </t>
       <artwork name="" type="" align="left" alt=""><![CDATA[
-SPKAC-Schema DEFINITIONS AUTOMATIC TAGS ::=
+SPKAC-Schema DEFINITIONS IMPLICIT TAGS ::=
 BEGIN
   IMPORTS
 
@@ -646,6 +691,7 @@ Netscape SPKI:
 
 v00 2020-03-01  minfrin   Initial version
 v01 2022-10-22  minfrin   Correct word blind use of terminology
+v02 2023-04-25  minfrin   Change DEFINITIONS AUTOMATIC TAGS to DEFINITIONS IMPLICIT TAGS as tags are not used
 
     -->
  </back>
